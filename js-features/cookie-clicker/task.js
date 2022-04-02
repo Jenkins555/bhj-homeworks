@@ -16,8 +16,8 @@ function click () {
     } else {
       image.width = 250;
    }        
-   let x =  setTimeout(function(){ clicker.textContent;}, 1000)
-   clicker__speed.textContent = 60 / x;
+    
+   clicker__speed.textContent = setTimeout(function(){clicker.textContent;}, 1000);
 }
 
 
