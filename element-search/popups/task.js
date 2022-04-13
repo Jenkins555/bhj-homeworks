@@ -1,26 +1,24 @@
-modal_main = document.getElementById('modal_main');
-modal__close = document.getElementsByClassName('modal__close');
-show_success = document.getElementsByClassName('show-success');
-modal_success = document.getElementById('modal_success');
-
-modal_main.classList.add('modal_active');
+modalMain = document.getElementById('modal_main');
+modalClose = document.getElementsByClassName('modal__close');
+modalSuccess = document.getElementById('modal_success');
 
 
-let arrayClose = Array.from(modal__close);
-let arraySuccess = Array.from(show_success);
+modalMain.classList.add('modal_active');
 
-arraySuccess.forEach(element => {
-    element.onclick = function () {
-        modal_success.classList.add('modal_active');
-    }
-});
 
-arrayClose.forEach(element => {
-    element.onclick = function () {
-        modal_main.className = "modal";
-    }
-});
+modalClose[0].onclick = function () { //Закрыть modal_main
+    modalMain.classList.remove('modal_active');
+}
 
+modalClose[2].onclick = function () { //Закрыть modal_success
+    modalSuccess.classList.remove('modal_active');
+}
+
+
+modalClose[1].onclick = function () {  //Открытие modal_success
+    modalMain.classList.remove("modal_active");
+    modalSuccess.classList.add("modal_active");
+}
 
 
 
