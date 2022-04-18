@@ -1,3 +1,4 @@
+
 class Game {
   constructor(container) {
     this.container = container;
@@ -16,14 +17,23 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
-  registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+  registerEvents(e) {
+    // console.log(this.currentSymbol)
+    document.addEventListener('keyup', (e) => {
+    //  console.log(e.key);
+      console.log(this.currentSymbol.textContent);
+      console.log(e.key);
+      if (e.key === 'Alt' && e.key === 'Shift' && e.key === 'Control') {
+        return;
+      } else if (e.key === 'Alt' || e.key === 'Shift' || e.key === 'Control') {
+        return;
+      } else if (this.currentSymbol.textContent === e.key.toLowerCase()) {
+        this.success();
+      } else {
+        this.fail();
+      }
+    })
+
   }
 
   success() {
@@ -56,18 +66,18 @@ class Game {
 
   getWord() {
     const words = [
-        'bob',
-        'awesome',
-        'netology',
-        'hello',
-        'kitty',
-        'rock',
-        'youtube',
-        'popcorn',
-        'cinema',
-        'love',
-        'javascript'
-      ],
+      'bob',
+      'awesome',
+      'netology',
+      'hello',
+      'kitty',
+      'rock',
+      'youtube',
+      'popcorn',
+      'cinema',
+      'love',
+      'javascript'
+    ],
       index = Math.floor(Math.random() * words.length);
 
     return words[index];
@@ -77,7 +87,7 @@ class Game {
     const html = [...word]
       .map(
         (s, i) =>
-          `<span class="symbol ${i === 0 ? 'symbol_current': ''}">${s}</span>`
+          `<span class="symbol ${i === 0 ? 'symbol_current' : ''}">${s}</span>`
       )
       .join('');
     this.wordElement.innerHTML = html;
