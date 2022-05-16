@@ -5,8 +5,9 @@ tasksList = document.querySelector('#tasks__list');
 
 function addTask(e) {
     e.preventDefault();
-    if (!taskInput.value) return;
-
+    if (!taskInput.value.trim()) {
+        return;
+    }
     tasksList.insertAdjacentHTML("beforeEnd", `<div class="task">
     <div class="task__title">`
         + taskInput.value +
@@ -24,8 +25,7 @@ function addTask(e) {
 function removeTask(e) {
     const target = e.target.closest('.task');
     if (!target) return;
-
-    target.style = 'display: none';
+    target.remove();
 }
 
 
